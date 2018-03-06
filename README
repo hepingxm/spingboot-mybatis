@@ -1,0 +1,9 @@
+项目环境：sping boot +mybatis+分页插件pageHelper,swagger的api文档自动生成插件+lombok减少部分代码的编写+阿里巴巴的数据库连接池+fastjson;
+
+日志记录：使用slf4j,配置文件为logbak-spring.xml;其中一个全局日志文件记录的java配置文件为/config/LogRecordAspect.java,
+
+分页pagehelper配置，在spring boot 启动java文件中添加了配置，其中/untils/PageBean.java为分页的主体内容封装类；
+
+swagger2配置：在/config/Swagger2.java中配置，并在spring boot 其中文件中添加了启用swagger2的注解；
+
+项目描述：该demo是spring-boot 与mybatis整合的项目，用来构建http api接口的开发，项目基本的工具与模块均已经划分，不足的地方待后期修改；
