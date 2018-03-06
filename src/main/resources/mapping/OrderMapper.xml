@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmtcyx.miniapi.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.xmtcyx.miniapi.model.Order" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="ordernum" property="ordernum" jdbcType="INTEGER" />
+    <result column="payprice" property="payprice" jdbcType="DECIMAL" />
+    <result column="ispay" property="ispay" jdbcType="INTEGER" />
+    <result column="paytime" property="paytime" jdbcType="TIMESTAMP" />
+    <result column="isdeliver" property="isdeliver" jdbcType="INTEGER" />
+    <result column="delivertime" property="delivertime" jdbcType="TIMESTAMP" />
+    <result column="isreceipt" property="isreceipt" jdbcType="INTEGER" />
+    <result column="receipttime" property="receipttime" jdbcType="TIMESTAMP" />
+    <result column="isevaluate" property="isevaluate" jdbcType="INTEGER" />
+    <result column="evaluatetime" property="evaluatetime" jdbcType="TIMESTAMP" />
+    <result column="isrefound" property="isrefound" jdbcType="INTEGER" />
+    <result column="refoundtime" property="refoundtime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="shopid" property="shopid" jdbcType="INTEGER" />
+    <result column="distype" property="distype" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ordernum, payprice, ispay, paytime, isdeliver, delivertime, isreceipt, receipttime, 
+    isevaluate, evaluatetime, isrefound, refoundtime, status, createtime, updatetime, 
+    shopid, distype
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmtcyx.miniapi.model.Order" >
+    insert into order (id, ordernum, payprice, 
+      ispay, paytime, isdeliver, 
+      delivertime, isreceipt, receipttime, 
+      isevaluate, evaluatetime, isrefound, 
+      refoundtime, status, createtime, 
+      updatetime, shopid, distype
+      )
+    values (#{id,jdbcType=BIGINT}, #{ordernum,jdbcType=INTEGER}, #{payprice,jdbcType=DECIMAL}, 
+      #{ispay,jdbcType=INTEGER}, #{paytime,jdbcType=TIMESTAMP}, #{isdeliver,jdbcType=INTEGER}, 
+      #{delivertime,jdbcType=TIMESTAMP}, #{isreceipt,jdbcType=INTEGER}, #{receipttime,jdbcType=TIMESTAMP}, 
+      #{isevaluate,jdbcType=INTEGER}, #{evaluatetime,jdbcType=TIMESTAMP}, #{isrefound,jdbcType=INTEGER}, 
+      #{refoundtime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{shopid,jdbcType=INTEGER}, #{distype,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmtcyx.miniapi.model.Order" >
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ordernum != null" >
+        ordernum,
+      </if>
+      <if test="payprice != null" >
+        payprice,
+      </if>
+      <if test="ispay != null" >
+        ispay,
+      </if>
+      <if test="paytime != null" >
+        paytime,
+      </if>
+      <if test="isdeliver != null" >
+        isdeliver,
+      </if>
+      <if test="delivertime != null" >
+        delivertime,
+      </if>
+      <if test="isreceipt != null" >
+        isreceipt,
+      </if>
+      <if test="receipttime != null" >
+        receipttime,
+      </if>
+      <if test="isevaluate != null" >
+        isevaluate,
+      </if>
+      <if test="evaluatetime != null" >
+        evaluatetime,
+      </if>
+      <if test="isrefound != null" >
+        isrefound,
+      </if>
+      <if test="refoundtime != null" >
+        refoundtime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="shopid != null" >
+        shopid,
+      </if>
+      <if test="distype != null" >
+        distype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="payprice != null" >
+        #{payprice,jdbcType=DECIMAL},
+      </if>
+      <if test="ispay != null" >
+        #{ispay,jdbcType=INTEGER},
+      </if>
+      <if test="paytime != null" >
+        #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeliver != null" >
+        #{isdeliver,jdbcType=INTEGER},
+      </if>
+      <if test="delivertime != null" >
+        #{delivertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isreceipt != null" >
+        #{isreceipt,jdbcType=INTEGER},
+      </if>
+      <if test="receipttime != null" >
+        #{receipttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isevaluate != null" >
+        #{isevaluate,jdbcType=INTEGER},
+      </if>
+      <if test="evaluatetime != null" >
+        #{evaluatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isrefound != null" >
+        #{isrefound,jdbcType=INTEGER},
+      </if>
+      <if test="refoundtime != null" >
+        #{refoundtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="distype != null" >
+        #{distype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmtcyx.miniapi.model.Order" >
+    update order
+    <set >
+      <if test="ordernum != null" >
+        ordernum = #{ordernum,jdbcType=INTEGER},
+      </if>
+      <if test="payprice != null" >
+        payprice = #{payprice,jdbcType=DECIMAL},
+      </if>
+      <if test="ispay != null" >
+        ispay = #{ispay,jdbcType=INTEGER},
+      </if>
+      <if test="paytime != null" >
+        paytime = #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeliver != null" >
+        isdeliver = #{isdeliver,jdbcType=INTEGER},
+      </if>
+      <if test="delivertime != null" >
+        delivertime = #{delivertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isreceipt != null" >
+        isreceipt = #{isreceipt,jdbcType=INTEGER},
+      </if>
+      <if test="receipttime != null" >
+        receipttime = #{receipttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isevaluate != null" >
+        isevaluate = #{isevaluate,jdbcType=INTEGER},
+      </if>
+      <if test="evaluatetime != null" >
+        evaluatetime = #{evaluatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isrefound != null" >
+        isrefound = #{isrefound,jdbcType=INTEGER},
+      </if>
+      <if test="refoundtime != null" >
+        refoundtime = #{refoundtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopid != null" >
+        shopid = #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="distype != null" >
+        distype = #{distype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmtcyx.miniapi.model.Order" >
+    update order
+    set ordernum = #{ordernum,jdbcType=INTEGER},
+      payprice = #{payprice,jdbcType=DECIMAL},
+      ispay = #{ispay,jdbcType=INTEGER},
+      paytime = #{paytime,jdbcType=TIMESTAMP},
+      isdeliver = #{isdeliver,jdbcType=INTEGER},
+      delivertime = #{delivertime,jdbcType=TIMESTAMP},
+      isreceipt = #{isreceipt,jdbcType=INTEGER},
+      receipttime = #{receipttime,jdbcType=TIMESTAMP},
+      isevaluate = #{isevaluate,jdbcType=INTEGER},
+      evaluatetime = #{evaluatetime,jdbcType=TIMESTAMP},
+      isrefound = #{isrefound,jdbcType=INTEGER},
+      refoundtime = #{refoundtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      shopid = #{shopid,jdbcType=INTEGER},
+      distype = #{distype,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmtcyx.miniapi.mapper.GoodAttrSaiMapper" >
+  <resultMap id="BaseResultMap" type="com.xmtcyx.miniapi.model.GoodAttrSai" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="goodid" property="goodid" jdbcType="BIGINT" />
+    <result column="attrids" property="attrids" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, goodid, attrids
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodattrsai
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from goodattrsai
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmtcyx.miniapi.model.GoodAttrSai" >
+    insert into goodattrsai (id, goodid, attrids
+      )
+    values (#{id,jdbcType=BIGINT}, #{goodid,jdbcType=BIGINT}, #{attrids,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmtcyx.miniapi.model.GoodAttrSai" >
+    insert into goodattrsai
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="attrids != null" >
+        attrids,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="goodid != null" >
+        #{goodid,jdbcType=BIGINT},
+      </if>
+      <if test="attrids != null" >
+        #{attrids,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmtcyx.miniapi.model.GoodAttrSai" >
+    update goodattrsai
+    <set >
+      <if test="goodid != null" >
+        goodid = #{goodid,jdbcType=BIGINT},
+      </if>
+      <if test="attrids != null" >
+        attrids = #{attrids,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmtcyx.miniapi.model.GoodAttrSai" >
+    update goodattrsai
+    set goodid = #{goodid,jdbcType=BIGINT},
+      attrids = #{attrids,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

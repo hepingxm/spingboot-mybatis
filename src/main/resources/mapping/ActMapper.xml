@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmtcyx.miniapi.mapper.ActMapper" >
+  <resultMap id="BaseResultMap" type="com.xmtcyx.miniapi.model.Act" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="actname" property="actname" jdbcType="VARCHAR" />
+    <result column="actdes" property="actdes" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, actname, actdes
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from act
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from act
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmtcyx.miniapi.model.Act" >
+    insert into act (id, actname, actdes
+      )
+    values (#{id,jdbcType=BIGINT}, #{actname,jdbcType=VARCHAR}, #{actdes,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmtcyx.miniapi.model.Act" >
+    insert into act
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="actname != null" >
+        actname,
+      </if>
+      <if test="actdes != null" >
+        actdes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="actname != null" >
+        #{actname,jdbcType=VARCHAR},
+      </if>
+      <if test="actdes != null" >
+        #{actdes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmtcyx.miniapi.model.Act" >
+    update act
+    <set >
+      <if test="actname != null" >
+        actname = #{actname,jdbcType=VARCHAR},
+      </if>
+      <if test="actdes != null" >
+        actdes = #{actdes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmtcyx.miniapi.model.Act" >
+    update act
+    set actname = #{actname,jdbcType=VARCHAR},
+      actdes = #{actdes,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

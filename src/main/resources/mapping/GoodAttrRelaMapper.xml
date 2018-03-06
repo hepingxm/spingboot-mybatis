@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmtcyx.miniapi.mapper.GoodAttrRelaMapper" >
+  <resultMap id="BaseResultMap" type="com.xmtcyx.miniapi.model.GoodAttrRela" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="goodid" property="goodid" jdbcType="BIGINT" />
+    <result column="attrid" property="attrid" jdbcType="BIGINT" />
+    <result column="attrresid" property="attrresid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, goodid, attrid, attrresid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodattrrela
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from goodattrrela
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmtcyx.miniapi.model.GoodAttrRela" >
+    insert into goodattrrela (id, goodid, attrid, 
+      attrresid)
+    values (#{id,jdbcType=BIGINT}, #{goodid,jdbcType=BIGINT}, #{attrid,jdbcType=BIGINT}, 
+      #{attrresid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmtcyx.miniapi.model.GoodAttrRela" >
+    insert into goodattrrela
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="attrid != null" >
+        attrid,
+      </if>
+      <if test="attrresid != null" >
+        attrresid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="goodid != null" >
+        #{goodid,jdbcType=BIGINT},
+      </if>
+      <if test="attrid != null" >
+        #{attrid,jdbcType=BIGINT},
+      </if>
+      <if test="attrresid != null" >
+        #{attrresid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmtcyx.miniapi.model.GoodAttrRela" >
+    update goodattrrela
+    <set >
+      <if test="goodid != null" >
+        goodid = #{goodid,jdbcType=BIGINT},
+      </if>
+      <if test="attrid != null" >
+        attrid = #{attrid,jdbcType=BIGINT},
+      </if>
+      <if test="attrresid != null" >
+        attrresid = #{attrresid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmtcyx.miniapi.model.GoodAttrRela" >
+    update goodattrrela
+    set goodid = #{goodid,jdbcType=BIGINT},
+      attrid = #{attrid,jdbcType=BIGINT},
+      attrresid = #{attrresid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

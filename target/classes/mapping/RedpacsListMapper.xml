@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmtcyx.miniapi.mapper.RedpacsListMapper" >
+  <resultMap id="BaseResultMap" type="com.xmtcyx.miniapi.model.RedpacsList" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="faqirenid" property="faqirenid" jdbcType="BIGINT" />
+    <result column="usrid" property="usrid" jdbcType="BIGINT" />
+    <result column="redprice" property="redprice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, faqirenid, usrid, redprice
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from redpacslist
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from redpacslist
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmtcyx.miniapi.model.RedpacsList" >
+    insert into redpacslist (id, faqirenid, usrid, 
+      redprice)
+    values (#{id,jdbcType=BIGINT}, #{faqirenid,jdbcType=BIGINT}, #{usrid,jdbcType=BIGINT}, 
+      #{redprice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmtcyx.miniapi.model.RedpacsList" >
+    insert into redpacslist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="faqirenid != null" >
+        faqirenid,
+      </if>
+      <if test="usrid != null" >
+        usrid,
+      </if>
+      <if test="redprice != null" >
+        redprice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="faqirenid != null" >
+        #{faqirenid,jdbcType=BIGINT},
+      </if>
+      <if test="usrid != null" >
+        #{usrid,jdbcType=BIGINT},
+      </if>
+      <if test="redprice != null" >
+        #{redprice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmtcyx.miniapi.model.RedpacsList" >
+    update redpacslist
+    <set >
+      <if test="faqirenid != null" >
+        faqirenid = #{faqirenid,jdbcType=BIGINT},
+      </if>
+      <if test="usrid != null" >
+        usrid = #{usrid,jdbcType=BIGINT},
+      </if>
+      <if test="redprice != null" >
+        redprice = #{redprice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmtcyx.miniapi.model.RedpacsList" >
+    update redpacslist
+    set faqirenid = #{faqirenid,jdbcType=BIGINT},
+      usrid = #{usrid,jdbcType=BIGINT},
+      redprice = #{redprice,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

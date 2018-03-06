@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmtcyx.miniapi.mapper.ShipCarGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.xmtcyx.miniapi.model.ShipCarGoods" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="shipcarid" property="shipcarid" jdbcType="BIGINT" />
+    <result column="shopid" property="shopid" jdbcType="BIGINT" />
+    <result column="goodid" property="goodid" jdbcType="BIGINT" />
+    <result column="goodnum" property="goodnum" jdbcType="INTEGER" />
+    <result column="goodattrs" property="goodattrs" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, shipcarid, shopid, goodid, goodnum, goodattrs, status, createtime, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from shipcargoods
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from shipcargoods
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmtcyx.miniapi.model.ShipCarGoods" >
+    insert into shipcargoods (id, shipcarid, shopid, 
+      goodid, goodnum, goodattrs, 
+      status, createtime, updatetime
+      )
+    values (#{id,jdbcType=BIGINT}, #{shipcarid,jdbcType=BIGINT}, #{shopid,jdbcType=BIGINT}, 
+      #{goodid,jdbcType=BIGINT}, #{goodnum,jdbcType=INTEGER}, #{goodattrs,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmtcyx.miniapi.model.ShipCarGoods" >
+    insert into shipcargoods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="shipcarid != null" >
+        shipcarid,
+      </if>
+      <if test="shopid != null" >
+        shopid,
+      </if>
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="goodnum != null" >
+        goodnum,
+      </if>
+      <if test="goodattrs != null" >
+        goodattrs,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="shipcarid != null" >
+        #{shipcarid,jdbcType=BIGINT},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=BIGINT},
+      </if>
+      <if test="goodid != null" >
+        #{goodid,jdbcType=BIGINT},
+      </if>
+      <if test="goodnum != null" >
+        #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="goodattrs != null" >
+        #{goodattrs,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmtcyx.miniapi.model.ShipCarGoods" >
+    update shipcargoods
+    <set >
+      <if test="shipcarid != null" >
+        shipcarid = #{shipcarid,jdbcType=BIGINT},
+      </if>
+      <if test="shopid != null" >
+        shopid = #{shopid,jdbcType=BIGINT},
+      </if>
+      <if test="goodid != null" >
+        goodid = #{goodid,jdbcType=BIGINT},
+      </if>
+      <if test="goodnum != null" >
+        goodnum = #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="goodattrs != null" >
+        goodattrs = #{goodattrs,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmtcyx.miniapi.model.ShipCarGoods" >
+    update shipcargoods
+    set shipcarid = #{shipcarid,jdbcType=BIGINT},
+      shopid = #{shopid,jdbcType=BIGINT},
+      goodid = #{goodid,jdbcType=BIGINT},
+      goodnum = #{goodnum,jdbcType=INTEGER},
+      goodattrs = #{goodattrs,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

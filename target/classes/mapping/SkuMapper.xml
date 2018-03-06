@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmtcyx.miniapi.mapper.SkuMapper" >
+  <resultMap id="BaseResultMap" type="com.xmtcyx.miniapi.model.Sku" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="goodid" property="goodid" jdbcType="BIGINT" />
+    <result column="skuattr" property="skuattr" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="skusale" property="skusale" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="cutprice" property="cutprice" jdbcType="DECIMAL" />
+    <result column="goodimgid" property="goodimgid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, goodid, skuattr, price, num, skusale, status, createtime, updatetime, cutprice, 
+    goodimgid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sku
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sku
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmtcyx.miniapi.model.Sku" >
+    insert into sku (id, goodid, skuattr, 
+      price, num, skusale, 
+      status, createtime, updatetime, 
+      cutprice, goodimgid)
+    values (#{id,jdbcType=BIGINT}, #{goodid,jdbcType=BIGINT}, #{skuattr,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{num,jdbcType=INTEGER}, #{skusale,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{cutprice,jdbcType=DECIMAL}, #{goodimgid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmtcyx.miniapi.model.Sku" >
+    insert into sku
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="skuattr != null" >
+        skuattr,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="skusale != null" >
+        skusale,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="cutprice != null" >
+        cutprice,
+      </if>
+      <if test="goodimgid != null" >
+        goodimgid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="goodid != null" >
+        #{goodid,jdbcType=BIGINT},
+      </if>
+      <if test="skuattr != null" >
+        #{skuattr,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="skusale != null" >
+        #{skusale,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cutprice != null" >
+        #{cutprice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodimgid != null" >
+        #{goodimgid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmtcyx.miniapi.model.Sku" >
+    update sku
+    <set >
+      <if test="goodid != null" >
+        goodid = #{goodid,jdbcType=BIGINT},
+      </if>
+      <if test="skuattr != null" >
+        skuattr = #{skuattr,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="skusale != null" >
+        skusale = #{skusale,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cutprice != null" >
+        cutprice = #{cutprice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodimgid != null" >
+        goodimgid = #{goodimgid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmtcyx.miniapi.model.Sku" >
+    update sku
+    set goodid = #{goodid,jdbcType=BIGINT},
+      skuattr = #{skuattr,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      num = #{num,jdbcType=INTEGER},
+      skusale = #{skusale,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      cutprice = #{cutprice,jdbcType=DECIMAL},
+      goodimgid = #{goodimgid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

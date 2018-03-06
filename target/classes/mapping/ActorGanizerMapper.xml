@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmtcyx.miniapi.mapper.ActorGanizerMapper" >
+  <resultMap id="BaseResultMap" type="com.xmtcyx.miniapi.model.ActorGanizer" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="actid" property="actid" jdbcType="BIGINT" />
+    <result column="usrid" property="usrid" jdbcType="BIGINT" />
+    <result column="assisid" property="assisid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, actid, usrid, assisid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from actorganizer
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from actorganizer
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmtcyx.miniapi.model.ActorGanizer" >
+    insert into actorganizer (id, actid, usrid, 
+      assisid)
+    values (#{id,jdbcType=BIGINT}, #{actid,jdbcType=BIGINT}, #{usrid,jdbcType=BIGINT}, 
+      #{assisid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmtcyx.miniapi.model.ActorGanizer" >
+    insert into actorganizer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="actid != null" >
+        actid,
+      </if>
+      <if test="usrid != null" >
+        usrid,
+      </if>
+      <if test="assisid != null" >
+        assisid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="actid != null" >
+        #{actid,jdbcType=BIGINT},
+      </if>
+      <if test="usrid != null" >
+        #{usrid,jdbcType=BIGINT},
+      </if>
+      <if test="assisid != null" >
+        #{assisid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmtcyx.miniapi.model.ActorGanizer" >
+    update actorganizer
+    <set >
+      <if test="actid != null" >
+        actid = #{actid,jdbcType=BIGINT},
+      </if>
+      <if test="usrid != null" >
+        usrid = #{usrid,jdbcType=BIGINT},
+      </if>
+      <if test="assisid != null" >
+        assisid = #{assisid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmtcyx.miniapi.model.ActorGanizer" >
+    update actorganizer
+    set actid = #{actid,jdbcType=BIGINT},
+      usrid = #{usrid,jdbcType=BIGINT},
+      assisid = #{assisid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

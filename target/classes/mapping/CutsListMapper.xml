@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmtcyx.miniapi.mapper.CutsListMapper" >
+  <resultMap id="BaseResultMap" type="com.xmtcyx.miniapi.model.CutsList" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="faqirenid" property="faqirenid" jdbcType="BIGINT" />
+    <result column="usrid" property="usrid" jdbcType="BIGINT" />
+    <result column="cutprice" property="cutprice" jdbcType="DECIMAL" />
+    <result column="say" property="say" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, faqirenid, usrid, cutprice, say
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from cutslist
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from cutslist
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xmtcyx.miniapi.model.CutsList" >
+    insert into cutslist (id, faqirenid, usrid, 
+      cutprice, say)
+    values (#{id,jdbcType=BIGINT}, #{faqirenid,jdbcType=BIGINT}, #{usrid,jdbcType=BIGINT}, 
+      #{cutprice,jdbcType=DECIMAL}, #{say,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmtcyx.miniapi.model.CutsList" >
+    insert into cutslist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="faqirenid != null" >
+        faqirenid,
+      </if>
+      <if test="usrid != null" >
+        usrid,
+      </if>
+      <if test="cutprice != null" >
+        cutprice,
+      </if>
+      <if test="say != null" >
+        say,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="faqirenid != null" >
+        #{faqirenid,jdbcType=BIGINT},
+      </if>
+      <if test="usrid != null" >
+        #{usrid,jdbcType=BIGINT},
+      </if>
+      <if test="cutprice != null" >
+        #{cutprice,jdbcType=DECIMAL},
+      </if>
+      <if test="say != null" >
+        #{say,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmtcyx.miniapi.model.CutsList" >
+    update cutslist
+    <set >
+      <if test="faqirenid != null" >
+        faqirenid = #{faqirenid,jdbcType=BIGINT},
+      </if>
+      <if test="usrid != null" >
+        usrid = #{usrid,jdbcType=BIGINT},
+      </if>
+      <if test="cutprice != null" >
+        cutprice = #{cutprice,jdbcType=DECIMAL},
+      </if>
+      <if test="say != null" >
+        say = #{say,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmtcyx.miniapi.model.CutsList" >
+    update cutslist
+    set faqirenid = #{faqirenid,jdbcType=BIGINT},
+      usrid = #{usrid,jdbcType=BIGINT},
+      cutprice = #{cutprice,jdbcType=DECIMAL},
+      say = #{say,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
